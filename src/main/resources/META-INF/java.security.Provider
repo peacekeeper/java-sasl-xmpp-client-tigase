@@ -1,1 +1,1 @@
-sasl.did.mechanism.DidSaslProvider
+sasl.mechanism.did.DIDChallengeSaslProvider
