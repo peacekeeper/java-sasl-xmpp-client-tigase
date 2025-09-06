@@ -24,8 +24,8 @@ public class SaslXmppClient {
 
     private static final Logger log = LogManager.getLogger(SaslXmppClient.class);
 
-    private static final String DOMAIN_NAME = "vienna2";
-    private static final BareJID USER_BARE_JID = BareJID.bareJIDInstance("alice@" + DOMAIN_NAME);
+    private static final String DOMAIN_NAME = "java-sasl-xmpp-server";
+    private static final BareJID USER_BARE_JID = BareJID.bareJIDInstance("markus@" + DOMAIN_NAME);
     private static final String PASSWORD = "tigase";
 
     public static void main(String[] args) throws Exception {
@@ -34,8 +34,8 @@ public class SaslXmppClient {
 
         jaxmpp.getConnectionConfiguration().setServer("localhost");
         jaxmpp.getConnectionConfiguration().setPort(5222);
-        jaxmpp.getConnectionConfiguration().setUseSASL(true);
-        jaxmpp.getConnectionConfiguration().setDisableTLS(false);
+        jaxmpp.getConnectionConfiguration().setUseSASL(false);
+        jaxmpp.getConnectionConfiguration().setDisableTLS(true);
 
         jaxmpp.getProperties().setUserProperty(SessionObject.DOMAIN_NAME, DOMAIN_NAME);
         jaxmpp.getProperties().setUserProperty(SessionObject.USER_BARE_JID, USER_BARE_JID);
@@ -56,7 +56,7 @@ public class SaslXmppClient {
         jaxmpp.login(true);
 
         for (int i=0; i<10; i++) {
-            log.debug("Connected: {}", jaxmpp.isConnected());
+            log.debug("Connected? {}", jaxmpp.isConnected());
             if (jaxmpp.isConnected()) {
                 messageModule.sendMessage(JID.jidInstance("bob@" + DOMAIN_NAME), "Test", "This is a test from alice");
             }
