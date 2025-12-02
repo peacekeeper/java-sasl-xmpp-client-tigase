@@ -25,8 +25,10 @@ public class SaslXmppClient {
     private static final Logger log = LogManager.getLogger(SaslXmppClient.class);
 
     private static final String DOMAIN_NAME = "java-sasl-xmpp-server";
-    private static final BareJID USER_BARE_JID = BareJID.bareJIDInstance("markus@" + DOMAIN_NAME);
-    private static final String PASSWORD = "tigase";
+    private static final BareJID USER_BARE_JID_ALICE = BareJID.bareJIDInstance("alice@" + DOMAIN_NAME);
+    private static final BareJID USER_BARE_JID_BOB = BareJID.bareJIDInstance("bob@" + DOMAIN_NAME);
+    private static final String PASSWORD_ALICE = "alicepass";
+    private static final String PASSWORD_BOB = "bobpass";
 
     public static void main(String[] args) throws Exception {
 
@@ -38,8 +40,8 @@ public class SaslXmppClient {
         jaxmpp.getConnectionConfiguration().setDisableTLS(true);
 
         jaxmpp.getProperties().setUserProperty(SessionObject.DOMAIN_NAME, DOMAIN_NAME);
-        jaxmpp.getProperties().setUserProperty(SessionObject.USER_BARE_JID, USER_BARE_JID);
-        jaxmpp.getProperties().setUserProperty(SessionObject.PASSWORD, PASSWORD);
+        jaxmpp.getProperties().setUserProperty(SessionObject.USER_BARE_JID, USER_BARE_JID_ALICE);
+        jaxmpp.getProperties().setUserProperty(SessionObject.PASSWORD, PASSWORD_ALICE);
         jaxmpp.getProperties().setUserProperty(SocketConnector.SSL_SOCKET_FACTORY_KEY, TrustAllSSLSocketFactory.getSSLSocketFactory());
 
         tigase.jaxmpp.j2se.Presence.initialize(jaxmpp);
@@ -58,7 +60,7 @@ public class SaslXmppClient {
         for (int i=0; i<10; i++) {
             log.debug("Connected? {}", jaxmpp.isConnected());
             if (jaxmpp.isConnected()) {
-                messageModule.sendMessage(JID.jidInstance("bob@" + DOMAIN_NAME), "Test", "This is a test from alice");
+                messageModule.sendMessage(JID.jidInstance(USER_BARE_JID_BOB), "Test", "This is a test from alice");
             }
             TimeUnit.SECONDS.sleep(5);
         }
