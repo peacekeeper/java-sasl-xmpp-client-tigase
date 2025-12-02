@@ -1,4 +1,4 @@
-# java-sasl-xmpp-client
+# java-sasl-xmpp-client-tigase
 
 This repository is one component of the project "Securing Internet protocols with DIDs, using SASL",
 see https://github.com/peacekeeper/did-based-sasl for an overview and list of all components.
