@@ -28,7 +28,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <mainClass>sasl.xmpp.client.SaslXmppClient</mainClass>
+                    <mainClass>sasl.xmpp.client.SaslXmppClientSCRAM</mainClass>
                 </configuration>
             </plugin>
         </plugins>

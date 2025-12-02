@@ -60,7 +60,9 @@ public class SaslXmppClient {
         for (int i=0; i<10; i++) {
             log.debug("Connected? {}", jaxmpp.isConnected());
             if (jaxmpp.isConnected()) {
-                messageModule.sendMessage(JID.jidInstance(USER_BARE_JID_BOB), "Test", "This is a test from alice");
+                log.debug("Sending message...");
+                messageModule.sendMessage(JID.jidInstance(USER_BARE_JID_BOB), "Test", "This is a test from " + USER_BARE_JID_ALICE);
+                log.debug("Sent message...");
             }
             TimeUnit.SECONDS.sleep(5);
         }
