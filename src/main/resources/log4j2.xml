@@ -7,8 +7,8 @@
 		</Console>
 
 		<RollingFile name="RollingFile"
-		             fileName="./logs/godiddy-cli-.log"
-		             filePattern="./logs/$${date:yyyy-MM}/godiddy-cli-%d{-dd-MMMM-yyyy}-%i.log.gz">
+		             fileName="./logs/java-sasl-xmpp-client-tigase-.log"
+		             filePattern="./logs/$${date:yyyy-MM}/java-sasl-xmpp-client-tigase-%d{-dd-MMMM-yyyy}-%i.log.gz">
 			<PatternLayout>
 				<pattern>%d %p %C{1.} [%t] %m%n</pattern>
 			</PatternLayout>
