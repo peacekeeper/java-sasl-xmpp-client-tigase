@@ -26,8 +26,9 @@
 			<AppenderRef ref="RollingFile"/>
 		</Root>
 
+		<Logger name="demo.sasl.client" level="debug"/>
 		<Logger name="sasl.xmpp.client" level="debug"/>
-		<Logger name="sasl.did" level="debug"/>
+		<Logger name="sasl.mechannism.did" level="debug"/>
 	</Loggers>
 
 </Configuration>
